@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axiosInstance.get("/verify");
+        const response = await axiosInstance.get("/auth/verify");
         if (response.status === 200) return setIsAuth(true);
       } catch (err) {
         setIsAuth(false);

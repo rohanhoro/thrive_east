@@ -30,7 +30,7 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axiosInstance.post("/logout");
+      await axiosInstance.post("/auth/logout");
       navigate("/login");
     } catch (error) {
       console.error("Logout failed:", error);
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="bg-secondary flex h-screen text-white">
+    <div className="bg-secondary flex h-fit text-white">
       <div className="flex flex-col items-center bg-tertiary w-60 p-4">
         <div className="pb-4">
           <img src={logo} alt="Thrive East Logo" className="h-16" />
