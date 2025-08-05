@@ -22,6 +22,13 @@ export default function ContactUs() {
     try {
       await axiosInstance.post("/enquiries", enquiryData);
       alert("Enquiry has been submitted");
+      setEnquiryData({
+        name: "",
+        email: "",
+        contactnumber: "",
+        service: "",
+        message: "",
+      });
     } catch (error) {
       console.error(error);
     }
