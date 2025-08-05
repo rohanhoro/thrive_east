@@ -14,20 +14,27 @@ export default function AdminDashboard() {
   const navItems = [
     {
       id: 1,
-      listName: "Enquiries",
+      listName: "Dashboard",
       icon: messageIcon,
       path: "/admin",
-      notification: enquiryCount,
+      notification: 0,
     },
     {
       id: 2,
+      listName: "Enquiries",
+      icon: messageIcon,
+      path: "/admin/enquiries",
+      notification: enquiryCount,
+    },
+    {
+      id: 3,
       listName: "Team members",
       icon: teamIcon,
       path: "/admin/team",
       notification: teamCount,
     },
     {
-      id: 3,
+      id: 4,
       listName: "Profile",
       icon: userIcon,
       path: "/admin/profile",
@@ -61,7 +68,7 @@ export default function AdminDashboard() {
   }, []);
   return (
     <div className="bg-secondary flex h-fit text-white">
-      <div className="flex flex-col items-center bg-tertiary w-60 p-4">
+      <div className="flex flex-col items-center bg-tertiary min-w-60 p-4">
         <div className="pb-4">
           <img src={logo} alt="Thrive East Logo" className="h-16" />
         </div>
@@ -90,7 +97,9 @@ export default function AdminDashboard() {
           Log out
         </button>
       </div>
-      <Outlet />
+      <div className="w-full">
+        <Outlet />
+      </div>
     </div>
   );
 }

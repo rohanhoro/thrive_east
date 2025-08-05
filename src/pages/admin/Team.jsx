@@ -1,6 +1,9 @@
+import ComingSoon from "../../components/ComingSoon";
 
 export default function Team() {
   return (
-    <div>team</div>
-  )
+    <div className="h-screen">
+      <ComingSoon />
+    </div>
+  );
 }

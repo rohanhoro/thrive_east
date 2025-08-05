@@ -1,6 +1,8 @@
-
+import ComingSoon from '../../components/ComingSoon'
 export default function Profile() {
   return (
-    <div>Profile</div>
-  )
+    <div className='h-screen'>
+      <ComingSoon />
+    </div>
+  );
 }

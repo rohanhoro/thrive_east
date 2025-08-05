@@ -106,6 +106,7 @@ function App() {
           }
         >
           <Route index element={<Enquiries />} />
+          <Route path="enquiries" element={<Enquiries />} />
           <Route path="team" element={<Team />} />
           <Route path="profile" element={<Profile />} />
         </Route>

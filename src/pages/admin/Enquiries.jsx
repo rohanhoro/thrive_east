@@ -31,7 +31,12 @@ export default function Enquiries() {
         <div className="text-xl text-white/20">No New Enquiries</div>
       ) : (
         <div>
-          <div className="text-2xl mb-4">Enquiries</div>
+          <div>
+            <div className="text-2xl mb-4">Enquiries</div>
+            <div>
+              <div></div>
+            </div>
+          </div>
           <div className=" flex flex-col gap-2">
             {enquiries.map((enquiry) => {
               return (
