@@ -59,7 +59,7 @@ export default function AdminLogin() {
           Back to Home
         </Link>
       </div>
-      <div className="relative -top-12 max-w-100 w-full space-y-8">
+      <div className="relative -top-12 max-w-100 w-full space-y-8 mx-4">
         <div className="flex justify-center">
           <img src={logo} alt="Thrive East Logo" className="h-16" />
         </div>

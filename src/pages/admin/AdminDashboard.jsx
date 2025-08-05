@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance";
+import logOutIcon from "../../assets/icons/logout.svg";
 import messageIcon from "../../assets/icons/message.svg";
 import teamIcon from "../../assets/icons/team.svg";
 import userIcon from "../../assets/icons/user.svg";
@@ -10,6 +11,7 @@ export default function AdminDashboard() {
   const [enquiryCount, setEnquiryCount] = useState(0);
   const [teamCount, setTeamCount] = useState(0);
   const [profileCount, setProfileCount] = useState(0);
+  const [menuOpen, setMenuOpen] = useState();
 
   const navItems = [
     {
@@ -67,17 +69,17 @@ export default function AdminDashboard() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="bg-secondary flex h-fit text-white">
-      <div className="flex flex-col items-center bg-tertiary min-w-60 p-4">
+    <div className="bg-secondary flex h-fit text-white ">
+      <div className="flex flex-col items-center bg-tertiary max-md:min-w-8 w-fit min-w-60 p-4">
         <div className="pb-4">
-          <img src={logo} alt="Thrive East Logo" className="h-16" />
+          <img src={logo} alt="Thrive East Logo" className="h-16 max-md:h-4" />
         </div>
         <ul className="flex flex-col gap-6 w-full border-t-2 border-secondary pt-4">
           {navItems.map((navItem) => (
             <Link
               key={navItem.id}
               to={navItem.path}
-              className="group relative flex gap-4 hover:text-primary"
+              className="group relative flex hover:text-primary"
             >
               <img src={navItem.icon} />
               {navItem.notification > 0 && (
@@ -86,15 +88,18 @@ export default function AdminDashboard() {
                 </span>
               )}
 
-              <div className="text-nowrap">{navItem.listName}</div>
+              <div className="ml-4 text-nowrap max-md:hidden">
+                {navItem.listName}
+              </div>
             </Link>
           ))}
         </ul>
         <button
           onClick={handleLogout}
-          className="hover:text-primary cursor-pointer w-full text-start my-6"
+          className="flex hover:text-primary cursor-pointer w-full text-start my-6 text-nowrap"
         >
-          Log out
+          <img src={logOutIcon} />
+          <div className="ml-4 max-md:hidden">Log out</div>
         </button>
       </div>
       <div className="w-full">
