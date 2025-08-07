@@ -111,27 +111,18 @@ export default function ContactUs() {
                     Please choose an option
                   </option>
                   <option
-                    value="The EastSide Chronicles - Event Management"
+                    value="The EastSide Chronicles"
                     className="text-black"
                   >
                     The EastSide Chronicles - Event Management
                   </option>
-                  <option
-                    value="Thrive East Studio - Videography and editing"
-                    className="text-black"
-                  >
+                  <option value="Thrive East Studio" className="text-black">
                     Thrive East Studio - Videography and editing
                   </option>
-                  <option
-                    value="EastNest Property Care- Property Management"
-                    className="text-black"
-                  >
+                  <option value="EastNest Property Care" className="text-black">
                     EastNest Property Care- Property Management
                   </option>
-                  <option
-                    value="EastNest - Homestays and AirBnb"
-                    className="text-black"
-                  >
+                  <option value="EastNest Homestays" className="text-black">
                     EastNest - Homestays and AirBnb
                   </option>
                 </select>

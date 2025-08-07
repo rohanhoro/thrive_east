@@ -5,9 +5,10 @@ import logOutIcon from "../../assets/icons/logout.svg";
 import messageIcon from "../../assets/icons/message.svg";
 import teamIcon from "../../assets/icons/team.svg";
 import userIcon from "../../assets/icons/user.svg";
+import sliderIcon from "../../assets/icons/slider.svg";
 import logo from "../../assets/logo_small.png";
 
-export default function AdminDashboard() {
+export default function AdminDashboardLayout() {
   const [enquiryCount, setEnquiryCount] = useState(0);
   const [teamCount, setTeamCount] = useState(0);
   const [profileCount, setProfileCount] = useState(0);
@@ -17,7 +18,7 @@ export default function AdminDashboard() {
     {
       id: 1,
       listName: "Dashboard",
-      icon: messageIcon,
+      icon: sliderIcon,
       path: "/admin",
       notification: 0,
     },

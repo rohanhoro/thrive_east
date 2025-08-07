@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AboutUs from "./pages/AboutUs";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminDashboardLayout from "./pages/admin/AdminDashboardLayout";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Enquiries from "./pages/admin/Enquiries";
 import Profile from "./pages/admin/Profile";
@@ -21,6 +21,7 @@ import Services from "./pages/Services";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import ThriveEastStudio from "./pages/ThriveEastStudio";
 import ThriveStore from "./pages/ThriveStore";
+import DashboardHome from "./pages/admin/DashboardHome";
 
 const routes = [
   {
@@ -101,11 +102,11 @@ function App() {
           path="/admin"
           element={
             <ProtectedRoute>
-              <AdminDashboard />
+              <AdminDashboardLayout />
             </ProtectedRoute>
           }
         >
-          <Route index element={<Enquiries />} />
+          <Route index element={<DashboardHome />} />
           <Route path="enquiries" element={<Enquiries />} />
           <Route path="team" element={<Team />} />
           <Route path="profile" element={<Profile />} />
