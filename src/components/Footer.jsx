@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto justify-start px-12 m-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 col-span-4 gap-8">
           <div>
             <Link to="/">
-              <img src={logo} alt="Logo" width={128}/>
+              <img src={logo} alt="Logo" width={128} />
             </Link>
           </div>
 
@@ -94,7 +94,12 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-center mt-8 text-sm text-gray-400">
-        &copy; {new Date().getFullYear()} ThriveEast LLP. All rights reserved.
+        <div>
+          &copy; {new Date().getFullYear()} ThriveEast LLP. All rights reserved.
+        </div>
+        <div>
+          Created by <a href="https://github.com/rohanhoro">Rohan Horo</a>
+        </div>
       </div>
     </footer>
   );

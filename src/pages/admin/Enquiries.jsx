@@ -1,10 +1,11 @@
-import { Trash } from "lucide-react";
+import { ArrowBigUpDash, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../api/axiosInstance";
 
 export default function Enquiries() {
   const [enquiries, setEnquiries] = useState([]);
   const [filterValue, setFilterValue] = useState("all");
+  const [refreshEnquiryCall, setRefreshEnquiryCall] = useState(false);
 
   const filteredEnquiries = enquiries.filter((enquiry) => {
     switch (filterValue) {
@@ -15,34 +16,45 @@ export default function Enquiries() {
       case "read":
         return enquiry.isRead && !enquiry.isDeleted;
       case "delete":
-        return enquiry.isRead && enquiry.isDeleted;
-
+        return enquiry.isDeleted;
       default:
-        return 
+        return;
     }
   });
-  
 
   useEffect(() => {
     const handleEnquiries = async () => {
       try {
-        const enquiries = (await axiosInstance.get("/getenquiries")).data;
-        setEnquiries(enquiries);
+        const { data } = await axiosInstance.get("/getenquiries");
+        setEnquiries(data);
 
-        console.log(enquiries);
+        console.log(data);
       } catch (error) {
         console.error("Server Error");
       }
     };
     handleEnquiries();
 
-    const interval = setInterval(handleEnquiries, 10000);
+    const interval = setInterval(handleEnquiries, 30000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [refreshEnquiryCall]);
 
   const filterEnquiries = (e) => {
     setFilterValue(e.target.value);
+  };
+
+  const deleteEnquiry = async (id) => {
+    const response = await axiosInstance.get(`enquiries/delete/${id}`);
+    if (response.status === 200) {
+      setRefreshEnquiryCall(!refreshEnquiryCall);
+    }
+  };
+  const restoreEnquiry = async (id) => {
+    const response = await axiosInstance.get(`enquiries/restore/${id}`);
+    if (response.status === 200) {
+      setRefreshEnquiryCall(!refreshEnquiryCall);
+    }
   };
 
   return (
@@ -102,8 +114,35 @@ export default function Enquiries() {
                         year: "numeric",
                       })}
                     </span>
-                    <span className="group-hover:text-white transition text-transparent">
-                      <Trash className="" strokeWidth={1.5} />
+                    <span
+                      className="group/item transition cursor-pointer hover:bg-white/10 rounded-full p-2"
+                      onClick={
+                        enquiry.isDeleted
+                          ? () => restoreEnquiry(enquiry._id)
+                          : () => deleteEnquiry(enquiry._id)
+                      }
+                    >
+                      {enquiry.isDeleted ? (
+                        <div className="relative">
+                          <ArrowBigUpDash
+                            className="group-hover:text-white text-transparent"
+                            strokeWidth={1.5}
+                          />
+                          <span className="group-hover/item:text-white group-hover/item:bg-black/30 text-transparent absolute top-[40px] -left-[20px] p-1 px-2 text-sm rounded-md">
+                            Restore
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="relative">
+                          <Trash
+                            className="group-hover:text-white text-transparent"
+                            strokeWidth={1.5}
+                          />
+                          <span className="group-hover/item:text-white group-hover/item:bg-black/30 text-transparent absolute top-[40px] -left-[20px] p-1 px-2 text-sm rounded-md">
+                            Deleted
+                          </span>
+                        </div>
+                      )}
                     </span>
                   </div>
                 </div>

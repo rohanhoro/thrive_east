@@ -88,7 +88,6 @@ export default function AdminDashboardLayout() {
                   {navItem.notification <= 99 ? navItem.notification : "99+"}
                 </span>
               )}
-
               <div className="ml-4 text-nowrap max-md:hidden">
                 {navItem.listName}
               </div>
